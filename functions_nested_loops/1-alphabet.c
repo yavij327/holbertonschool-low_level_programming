@@ -11,13 +11,16 @@ int main(void)
 	return (0);
 }
 
+/**
+ * print_alphabet - Prints the alphabet in lowercase
+ */
 void print_alphabet(void)
 {
-	int ch;
+	char letter;
 
-	for (ch = 'a'; ch <= 'z'; ch++)
+	for (letter = 'a'; letter <= 'z'; letter++)
 	{
-		_putchar(ch);
+		_putchar(letter);
 	}
 	_putchar('\n');
 }
