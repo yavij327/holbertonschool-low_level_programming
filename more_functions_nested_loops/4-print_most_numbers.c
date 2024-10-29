@@ -1,11 +1,8 @@
 #include "main.h"
 
 /**
- * main - Entry point of the program
- *
- * Return: Always 0 (Success)
+ * print_most_numbers - prints numbers from 0 to 9, skipping 2 and 4
  */
-
 void print_most_numbers(void)
 {
 	int ch;
@@ -13,9 +10,9 @@ void print_most_numbers(void)
 	for (ch = '0'; ch <= '9'; ch++)
 	{
 		if (ch == '2' || ch == '4')
-		continue;
-
+			continue;
 		_putchar(ch);
 	}
 	_putchar('\n');
 }
+
