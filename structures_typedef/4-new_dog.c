@@ -1,6 +1,21 @@
 #include "dog.h"
 #include <stdlib.h>
-#include <string.h>
+
+/**
+ * _strlength - Calculates the length of a string.
+ * @str: The string whose length is to be calculated.
+ *
+ * Return: The length of the string.
+ */
+int _strlength(char *str)
+{
+	int length = 0;
+
+	while (str[length] != '\0')
+		length++;
+
+	return (length);
+}
 
 /**
  * new_dog - Creates a new dog.
@@ -14,35 +29,34 @@ dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *dog;
 	char *name_copy, *owner_copy;
+	int i; /* Declare variables outside loops */
 
 	if (name == NULL || owner == NULL)
 		return (NULL);
 
-	/* Allocate memory for the new dog struct */
 	dog = malloc(sizeof(dog_t));
 	if (dog == NULL)
 		return (NULL);
 
-	/* Allocate and copy name */
-	name_copy = malloc(strlen(name) + 1);
+	name_copy = malloc(_strlength(name) + 1);
 	if (name_copy == NULL)
 	{
 		free(dog);
 		return (NULL);
 	}
-	strcpy(name_copy, name);
+	for (i = 0; i <= _strlength(name); i++) /* Use previously declared variable */
+		name_copy[i] = name[i];
 
-	/* Allocate and copy owner */
-	owner_copy = malloc(strlen(owner) + 1);
+	owner_copy = malloc(_strlength(owner) + 1);
 	if (owner_copy == NULL)
 	{
 		free(name_copy);
 		free(dog);
 		return (NULL);
 	}
-	strcpy(owner_copy, owner);
+	for (i = 0; i <= _strlength(owner); i++) /* Reuse the same variable */
+		owner_copy[i] = owner[i];
 
-	/* Initialize the dog struct */
 	dog->name = name_copy;
 	dog->age = age;
 	dog->owner = owner_copy;
